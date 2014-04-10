@@ -1,0 +1,23 @@
+{% extends 'templates/base.html' %}
+{% block corpo %}
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h1>Página de cursos</h1>
+                <form action="{{ salvar_path }}" method="post">
+                    <fieldset>
+                        <input type="text" name="nome" placeholder="Nome do Curso" />
+                        <input type="text" name="descricao" placeholder="Descrição do Curso" />
+                    </fieldset>
+                    <button class="btn btn-primary" type="submit">Adicionar Curso</button>
+                </form>
+                <ol>
+                    {% for c in cursos %}
+                        <li><a href="{{ c.detalhar_path }}">{{ c.nome }}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

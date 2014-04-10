@@ -5,6 +5,9 @@ from tekton.gae.middleware import router_middleware, parameter, webapp2_dependen
 
 SENDER_EMAIL = 'renzon@gmail.com'
 WEB_BASE_PACKAGE = "web"
-MIDDLEWARES = [tmpl_middleware.execute, email_errors.execute, webapp2_dependencies.execute, parameter.execute,
+MIDDLEWARES = [tmpl_middleware.execute,
+               email_errors.execute,
+               webapp2_dependencies.execute,
+               parameter.execute,
                router_middleware.execute]
 
