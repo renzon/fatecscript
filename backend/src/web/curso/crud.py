@@ -5,10 +5,11 @@ from curso.modelo import Curso
 from tekton import router
 
 
-def salvar(_handler, nome, descricao):
+def salvar(_handler,_usuario_corrente, nome, descricao):
     from web.curso.home import index
 
-    curso = Curso(nome=nome, descricao=descricao)
+    curso = Curso(nome=nome, descricao=descricao,
+                  dono_key=_usuario_corrente.key)
     curso.put()
     path = router.to_path(index)
     _handler.redirect(path)
