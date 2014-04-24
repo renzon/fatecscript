@@ -1,20 +1,27 @@
 {% extends 'templates/base.html' %}
+{% block cabecalho %}
+    <script type="text/javascript" src="/static/js/angular.min.js"></script>
+    <script type="text/javascript" src="/static/js/curso.js"></script>
+{% endblock %}
+
 {% block corpo %}
     <div class="container">
         <div class="row clearfix">
-            <div class="col-md-12 column">
+            <div class="col-md-12 column" ng-app="myApp" ng-controller="MyAppCtrl">
                 <h1>Página de cursos</h1>
-                <form action="{{ salvar_path }}" method="post">
-                    <fieldset>
-                        <input type="text" name="nome" placeholder="Nome do Curso" />
-                        <input type="text" name="descricao" placeholder="Descrição do Curso" />
-                    </fieldset>
-                    <button class="btn btn-primary" type="submit">Adicionar Curso</button>
+
+
+                <input type="text" name="nome" ng-model="nomeDoCurso" placeholder="Nome do Curso"/>
+                <input type="text" name="descricao" ng-model="descricaoDoCurso" placeholder="Descrição do Curso"/>
+
+                <button class="btn btn-primary" type="submit" ng-click="adicionarCurso()">Adicionar Curso</button>
                 </form>
                 <ol>
-                    {% for c in cursos %}
-                        <li><a href="{{ c.detalhar_path }}">{{ c.nome }}</a></li>
-                    {% endfor %}
+
+                    <li ng-repeat="curso in listaDeCursos">
+                        <a href="{_ curso.detalhar_path _}">{_ curso.nome _}</a>
+                    </li>
+
                 </ol>
             </div>
         </div>
