@@ -16,13 +16,41 @@
 
                 <button class="btn btn-primary" type="submit" ng-click="adicionarCurso()">Adicionar Curso</button>
                 </form>
-                <ol>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nome do Curso</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="curso in listaDeCursos">
+                        <td><span ng-hide="curso.mostrandoInterfaceEdicao">
+                            <button class="btn btn-primary" ng-click="curso.mostrandoInterfaceEdicao=true"><i
+                                    class="glyphicon glyphicon-pencil"></i></button>
+                            <a ng-hide="curso.mostrandoInterfaceEdicao"
+                               href="{_ curso.detalhar_path _}">{_ curso.nome _}</a>
+                            </span>
+                            <span class="col-md-6 column">
+                             <span ng-show="curso.mostrandoInterfaceEdicao" class="input-group">
+                            <input type="text" class="form-control" ng-model="curso.nome">
 
-                    <li ng-repeat="curso in listaDeCursos">
-                        <a href="{_ curso.detalhar_path _}">{_ curso.nome _}</a>
-                    </li>
+                              <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" ng-click="editarCurso(curso)"><i class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                                </span>
+                        </span>
+                                </span>
+                        </td>
+                        <td style="width: 200px;">
 
-                </ol>
+                            <button class="btn btn-danger" ng-click="deletarCurso(curso,$index)"><i class="glyphicon glyphicon-trash"></i></button>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+
             </div>
         </div>
 
