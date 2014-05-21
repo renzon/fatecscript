@@ -5,7 +5,7 @@ from curso.modelo import Curso
 from tekton import router
 
 
-def salvar(_handler,_usuario_corrente, nome, descricao):
+def salvar(_handler, _usuario_corrente, nome, descricao):
     from web.curso.home import index
 
     curso = Curso(nome=nome, descricao=descricao,
